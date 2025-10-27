@@ -8,207 +8,167 @@ A modern and user-friendly e-commerce application. Developed using Next.js, Type
 
 ## 📅 Proje Güncellemeleri | Project Updates
 
-### 26 Ekim 2025 | October 26, 2025
+### 27 Ekim 2025 | October 27, 2025
 
 #### ✨ Eklenen Özellikler | Added Features
 
-**🏠 Ana Sayfa Yapısı | Homepage Structure**
-
-🇹🇷 
-- Banner bileşeni ile görsel çekicilik sağlandı
-- Kategori navigasyonu eklendi (8 kategori ile responsive tasarım)
-- Ürün kartları için grid düzeni oluşturuldu
-- Tüm ürünler listesi dinamik olarak görüntüleniyor
-
-🇬🇧
-- Banner component for visual appeal
-- Category navigation added (responsive design with 8 categories)
-- Grid layout created for product cards
-- All products list displayed dynamically
-
----
-
-**🎨 Navbar Bileşeni | Navbar Component**
+**🛒 Sepet Sistemi (Cart System)**
 
 🇹🇷
-- Logo tasarımı (Burada.com)
-- Arama çubuğu (desktop için)
-- Sepet sayacı placeholder'ı
-- Kullanıcı profili alanı
-- Mobil hamburger menü
-- Responsive tasarım (mobil ve desktop uyumlu)
+- Context API ile global sepet yönetimi (CartContext)
+- localStorage entegrasyonu - sepet verileri tarayıcıda saklanıyor
+- Sepete ürün ekleme fonksiyonu
+- Sepetten ürün silme fonksiyonu
+- Tüm sepeti temizleme özelliği
+- Sepetteki ürün miktarını artırma/azaltma
+- React Hot Toast ile bildirim sistemi
+- Sepet sayfası oluşturuldu
 
 🇬🇧
-- Logo design (Burada.com)
-- Search bar (for desktop)
-- Cart counter placeholder
-- User profile area
-- Mobile hamburger menu
-- Responsive design (mobile and desktop compatible)
+- Global cart management with Context API (CartContext)
+- localStorage integration - cart data persists in browser
+- Add product to cart function
+- Remove product from cart function
+- Clear entire cart feature
+- Increase/decrease product quantity in cart
+- Notification system with React Hot Toast
+- Cart page created
 
 ---
 
-**📦 Ürün Kartı Özellikleri | Product Card Features**
+**🎯 Sepet Sayfası Özellikleri | Cart Page Features**
 
 🇹🇷
-- Ürün görseli (240x250px boyutunda)
-- Ürün adı (20 karakterden uzunsa kısaltma)
-- Yıldız değerlendirme sistemi (Material-UI Rating)
-- Fiyat gösterimi (TL formatında)
-- Tıklanabilir kart yapısı (detay sayfasına yönlendirme)
-- Dinamik rating hesaplama (ürün yorumlarına göre)
+- Responsive tablo tasarımı (5 sütun: Resim, Ad, Miktar, Fiyat, Sil)
+- Ürün görselleri (100x100px)
+- Her ürün için Counter bileşeni ile miktar kontrolü
+- Ürün silme butonu
+- Toplam sepet tutarı hesaplama
+- "Sepeti Sil" butonu
+- Boş sepet kontrolü ve mesajı
+- Özel tasarlanmış amber temalı başlık satırı
 
 🇬🇧
-- Product image (240x250px size)
-- Product name (truncated if longer than 20 characters)
-- Star rating system (Material-UI Rating)
-- Price display (in TL format)
-- Clickable card structure (redirects to detail page)
-- Dynamic rating calculation (based on product reviews)
+- Responsive table design (5 columns: Image, Name, Quantity, Price, Delete)
+- Product images (100x100px)
+- Counter component for quantity control per product
+- Delete product button
+- Total cart amount calculation
+- "Clear Cart" button
+- Empty cart check and message
+- Custom designed amber-themed header row
 
 ---
 
-**🔍 Ürün Detay Sayfası | Product Detail Page**
+**🎨 Navbar Güncellemeleri | Navbar Updates**
 
 🇹🇷
-- Büyük ürün görseli (200x200 mobil, 400x400 desktop)
-- Ürün bilgileri (isim, açıklama, fiyat)
-- Stok durumu göstergesi (yeşil/kırmızı)
-- Yıldız değerlendirme gösterimi
-- Miktar artırma/azaltma sayacı (1-10 arası)
-- "Sepete Ekle" butonu
-- Yorumlar bölümü (kullanıcı avatarı ve yorumları ile)
+- Sepet ikonu eklendi (MdShoppingBasket)
+- Sepetteki ürün sayısı badge'i (turuncu rozetli)
+- Arama çubuğu tasarımı tamamlandı (amber border, rounded)
+- "Ara" butonu eklendi
 
 🇬🇧
-- Large product image (200x200 mobile, 400x400 desktop)
-- Product information (name, description, price)
-- Stock status indicator (green/red)
-- Star rating display
-- Quantity increase/decrease counter (between 1-10)
-- "Add to Cart" button
-- Reviews section (with user avatar and comments)
+- Cart icon added (MdShoppingBasket)
+- Cart items count badge (orange badge)
+- Search bar design completed (amber border, rounded)
+- "Search" button added
 
 ---
 
-**🧩 Genel Bileşenler | General Components**
+**⚙️ Context & Provider Yapısı | Context & Provider Structure**
 
 🇹🇷
-- **Button**: Özelleştirilebilir buton (small, outline varyantları)
-- **Counter**: Ürün miktarı kontrolü (+/- butonları)
-- **Heading**: Sayfa başlıkları için reusable bileşen
-- **Avatar**: Kullanıcı profil resmi gösterimi
-- **Comment**: Yorum kartı (kullanıcı bilgisi ve yorum metni)
-- **PageContainer**: Responsive padding wrapper
+- CartContext oluşturuldu
+- CartContextProvider ile global state yönetimi
+- useCart custom hook'u
+- CartProvider wrapper component
+- Layout.tsx'e provider entegrasyonu
 
 🇬🇧
-- **Button**: Customizable button (small, outline variants)
-- **Counter**: Product quantity control (+/- buttons)
-- **Heading**: Reusable component for page titles
-- **Avatar**: User profile picture display
-- **Comment**: Comment card (user info and comment text)
-- **PageContainer**: Responsive padding wrapper
+- CartContext created
+- Global state management with CartContextProvider
+- useCart custom hook
+- CartProvider wrapper component
+- Provider integration to Layout.tsx
 
 ---
 
-**📱 Footer**
+**🔧 Sepet Fonksiyonları | Cart Functions**
 
 🇹🇷
-- Basit footer yapısı (turuncu arkaplan)
-- Responsive yükseklik ayarı
+- `addToBasket`: Sepete ürün ekleme
+- `removeFromCart`: Sepetten ürün silme
+- `removeCart`: Tüm sepeti temizleme
+- `addToBasketIncrease`: Sepetteki ürün miktarını artırma (max 10)
+- `addToBasketDecrease`: Sepetteki ürün miktarını azaltma (min 1)
+- localStorage senkronizasyonu
 
 🇬🇧
-- Simple footer structure (orange background)
-- Responsive height adjustment
+- `addToBasket`: Add product to cart
+- `removeFromCart`: Remove product from cart
+- `removeCart`: Clear entire cart
+- `addToBasketIncrease`: Increase product quantity in cart (max 10)
+- `addToBasketDecrease`: Decrease product quantity in cart (min 1)
+- localStorage synchronization
 
 ---
 
-#### 🔧 Teknik Altyapı | Technical Infrastructure
-
-**Veri Yönetimi | Data Management**
+**📱 Detay Sayfası Güncellemeleri | Detail Page Updates**
 
 🇹🇷
-- 5 ürün verisi (iPhone 14, Logitech MX, iPhone 12, Logitech MX Master, Smart Watch)
-- Her ürün için reviews array'i
-- Ürün özellikleri: id, name, description, price, brand, category, inStock, image
+- "Sepete Ekle" butonu fonksiyonel hale getirildi
+- Sepette olan ürünler için "Sepete Ekli" butonu gösterimi
+- useEffect ile sepet kontrolü
+- displayButton state'i ile dinamik buton gösterimi
+- Ürün zaten sepetteyse Counter ve Sepete Ekle butonu gizleniyor
 
 🇬🇧
-- 5 product data (iPhone 14, Logitech MX, iPhone 12, Logitech MX Master, Smart Watch)
-- Reviews array for each product
-- Product properties: id, name, description, price, brand, category, inStock, image
+- "Add to Cart" button made functional
+- "Added to Cart" button display for products in cart
+- Cart check with useEffect
+- Dynamic button display with displayButton state
+- Counter and Add to Cart button hidden if product already in cart
 
 ---
 
-**Yardımcı Fonksiyonlar | Helper Functions**
+**🎨 UI İyileştirmeleri | UI Improvements**
 
 🇹🇷
-- `textClip`: Uzun metinleri kısaltma (20 karakterden sonra "..." ekleme)
+- Sepet sayfası için özel tablo tasarımı (amber temalı, shadow, border)
+- Toast bildirimleri için sağ üst pozisyon
+- Responsive grid düzeni (her sütun w-1/5)
+- Flex-grow ile dinamik sayfa yüksekliği (min-h-screen)
+- Turuncu tema renkleri güncellendi
 
 🇬🇧
-- `textClip`: Truncate long texts (adds "..." after 20 characters)
+- Custom table design for cart page (amber themed, shadow, border)
+- Top-right position for toast notifications
+- Responsive grid layout (each column w-1/5)
+- Dynamic page height with flex-grow (min-h-screen)
+- Orange theme colors updated
 
 ---
 
-**State Yönetimi | State Management**
+#### 🔧 Teknik Değişikler | Technical Changes
 
 🇹🇷
-- `useState` ile ürün miktarı kontrolü
-- Sepet ürünü için CardProductProps interface'i
+- React Hot Toast kütüphanesi eklendi
+- Context API implementasyonu
+- localStorage kullanımı
+- useCallback ile performans optimizasyonu
+- TypeScript interface'leri (CartContextProps)
+- Custom hook pattern (useCart)
+- Provider pattern implementasyonu
 
 🇬🇧
-- Product quantity control with `useState`
-- CardProductProps interface for cart products
-
----
-
-**Routing**
-
-🇹🇷
-- Dynamic routing: `/product/[productId]`
-- useRouter ile programmatik navigasyon
-
-🇬🇧
-- Dynamic routing: `/product/[productId]`
-- Programmatic navigation with useRouter
-
----
-
-#### 🎯 UI/UX İyileştirmeleri | UI/UX Improvements
-
-🇹🇷
-- Responsive tasarım (mobil ve desktop uyumlu)
-- Tailwind CSS ile modern stil
-- Material-UI Rating bileşeni entegrasyonu
-- React Icons kullanımı (RxAvatar, RxHamburgerMenu)
-- Next.js Image optimizasyonu
-- Hover ve click etkileşimleri
-- Overflow-x-auto ile yatay scroll
-
-🇬🇧
-- Responsive design (mobile and desktop compatible)
-- Modern styling with Tailwind CSS
-- Material-UI Rating component integration
-- React Icons usage (RxAvatar, RxHamburgerMenu)
-- Next.js Image optimization
-- Hover and click interactions
-- Horizontal scroll with overflow-x-auto
-
----
-
-#### 🔄 Yapılacaklar | To-Do List
-
-⚠️ **Not | Note**: 
-
-🇹🇷 Bu bir eğitim projesidir ve aşağıdaki özellikler henüz eklenmemiştir:
-
-🇬🇧 This is an educational project and the following features have not been implemented yet:
-
-- 🇹🇷 Gerçek arama fonksiyonalitesi | 🇬🇧 Real search functionality
-- 🇹🇷 Sepet işlevselliği (sepete ekleme, görüntüleme) | 🇬🇧 Cart functionality (add to cart, view)
-- 🇹🇷 Kullanıcı giriş/kayıt sistemi | 🇬🇧 User login/registration system
-- 🇹🇷 Kategori filtreleme | 🇬🇧 Category filtering
-- 🇹🇷 Ürün sepete ekleme API entegrasyonu | 🇬🇧 Add to cart API integration
-- 🇹🇷 Footer içerik geliştirme | 🇬🇧 Footer content development
-- 🇹🇷 Backend entegrasyonu | 🇬🇧 Backend integration
+- React Hot Toast library added
+- Context API implementation
+- localStorage usage
+- Performance optimization with useCallback
+- TypeScript interfaces (CartContextProps)
+- Custom hook pattern (useCart)
+- Provider pattern implementation
 
 ---
 
@@ -219,6 +179,7 @@ A modern and user-friendly e-commerce application. Developed using Next.js, Type
 - **Tailwind CSS** - Styling
 - **Material-UI** - Rating Component
 - **React Icons** - Icon Library
+- **React Hot Toast** - Notification System
 
 ---
 
@@ -236,10 +197,10 @@ npm run dev
 
 ## 📝 Notlar | Notes
 
-🇹🇷 Proje halen geliştirilme aşamasındadır. Her gün yeni özellikler eklenmektedir. Temel e-ticaret yapısı kurulmuş olup, backend entegrasyonu ve sepet işlevselliği yakında eklenecektir.
+🇹🇷 Proje halen geliştirilme aşamasındadır. Her gün yeni özellikler eklenmektedir. Sepet sistemi ve temel e-ticaret yapısı tamamlanmış olup, backend entegrasyonu yakında eklenecektir.
 
-🇬🇧 The project is still under development. New features are being added every day. The basic e-commerce structure has been established, and backend integration and cart functionality will be added soon.
+🇬🇧 The project is still under development. New features are being added every day. Cart system and basic e-commerce structure have been completed, and backend integration will be added soon.
 
 ---
 
-**Son Güncelleme | Last Update**: 26 Ekim 2025 | October 26, 2025
+**Son Güncelleme | Last Update**: 27 Ekim 2025 | October 27, 2025
