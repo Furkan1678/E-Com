@@ -8,167 +8,175 @@ A modern and user-friendly e-commerce application. Developed using Next.js, Type
 
 ## 📅 Proje Güncellemeleri | Project Updates
 
-### 27 Ekim 2025 | October 27, 2025
+### 28 Ekim 2025 | October 28, 2025
 
 #### ✨ Eklenen Özellikler | Added Features
 
-**🛒 Sepet Sistemi (Cart System)**
+**🔐 Kimlik Doğrulama Sistemi (Authentication System)**
 
 🇹🇷
-- Context API ile global sepet yönetimi (CartContext)
-- localStorage entegrasyonu - sepet verileri tarayıcıda saklanıyor
-- Sepete ürün ekleme fonksiyonu
-- Sepetten ürün silme fonksiyonu
-- Tüm sepeti temizleme özelliği
-- Sepetteki ürün miktarını artırma/azaltma
-- React Hot Toast ile bildirim sistemi
-- Sepet sayfası oluşturuldu
+- NextAuth.js entegrasyonu
+- Google OAuth ile giriş desteği
+- Credentials Provider ile email/şifre girişi
+- Kayıt olma (Register) sayfası
+- Giriş yapma (Login) sayfası
+- JWT tabanlı session yönetimi
+- Şifre hashleme (bcrypt)
 
 🇬🇧
-- Global cart management with Context API (CartContext)
-- localStorage integration - cart data persists in browser
-- Add product to cart function
-- Remove product from cart function
-- Clear entire cart feature
-- Increase/decrease product quantity in cart
-- Notification system with React Hot Toast
-- Cart page created
+- NextAuth.js integration
+- Google OAuth login support
+- Email/password login with Credentials Provider
+- Register page
+- Login page
+- JWT-based session management
+- Password hashing (bcrypt)
 
 ---
 
-**🎯 Sepet Sayfası Özellikleri | Cart Page Features**
+**💾 MongoDB & Prisma Entegrasyonu | MongoDB & Prisma Integration**
 
 🇹🇷
-- Responsive tablo tasarımı (5 sütun: Resim, Ad, Miktar, Fiyat, Sil)
-- Ürün görselleri (100x100px)
-- Her ürün için Counter bileşeni ile miktar kontrolü
-- Ürün silme butonu
-- Toplam sepet tutarı hesaplama
-- "Sepeti Sil" butonu
-- Boş sepet kontrolü ve mesajı
-- Özel tasarlanmış amber temalı başlık satırı
+- MongoDB Atlas veritabanı bağlantısı
+- Prisma ORM kurulumu
+- User modeli (id, name, email, hashedPassword, role)
+- Product modeli (id, name, description, price, brand, category, inStock, image)
+- Review modeli (userId, productId, rating, comment)
+- Account modeli (NextAuth için)
+- Role enum (USER, ADMIN)
+- İlişkisel veritabanı yapısı
 
 🇬🇧
-- Responsive table design (5 columns: Image, Name, Quantity, Price, Delete)
-- Product images (100x100px)
-- Counter component for quantity control per product
-- Delete product button
-- Total cart amount calculation
-- "Clear Cart" button
-- Empty cart check and message
-- Custom designed amber-themed header row
+- MongoDB Atlas database connection
+- Prisma ORM setup
+- User model (id, name, email, hashedPassword, role)
+- Product model (id, name, description, price, brand, category, inStock, image)
+- Review model (userId, productId, rating, comment)
+- Account model (for NextAuth)
+- Role enum (USER, ADMIN)
+- Relational database structure
 
 ---
 
-**🎨 Navbar Güncellemeleri | Navbar Updates**
+**📝 Kayıt & Giriş Sayfaları | Register & Login Pages**
 
 🇹🇷
-- Sepet ikonu eklendi (MdShoppingBasket)
-- Sepetteki ürün sayısı badge'i (turuncu rozetli)
-- Arama çubuğu tasarımı tamamlandı (amber border, rounded)
-- "Ara" butonu eklendi
+- React Hook Form ile form yönetimi
+- Input validasyonu (required fields)
+- Email ve şifre input alanları
+- "Google ile Giriş Yap/Üye Ol" butonları
+- Sayfa geçişleri için Link'ler
+- AuthContainer wrapper bileşeni
+- Başarılı/başarısız işlem bildirimleri (toast)
+- Otomatik yönlendirme (başarılı girişten sonra /cart)
 
 🇬🇧
-- Cart icon added (MdShoppingBasket)
-- Cart items count badge (orange badge)
-- Search bar design completed (amber border, rounded)
-- "Search" button added
+- Form management with React Hook Form
+- Input validation (required fields)
+- Email and password input fields
+- "Sign in/up with Google" buttons
+- Links for page transitions
+- AuthContainer wrapper component
+- Success/error notifications (toast)
+- Auto redirect (to /cart after successful login)
 
 ---
 
-**⚙️ Context & Provider Yapısı | Context & Provider Structure**
+**🔧 API Routes**
 
 🇹🇷
-- CartContext oluşturuldu
-- CartContextProvider ile global state yönetimi
-- useCart custom hook'u
-- CartProvider wrapper component
-- Layout.tsx'e provider entegrasyonu
+- `/api/auth/[...nextauth]` - NextAuth API route
+- `/api/register` - Kullanıcı kayıt endpoint'i
+- POST request ile yeni kullanıcı oluşturma
+- Şifre hashleme (bcrypt, 10 salt rounds)
+- Prisma ile veritabanı işlemleri
 
 🇬🇧
-- CartContext created
-- Global state management with CartContextProvider
-- useCart custom hook
-- CartProvider wrapper component
-- Provider integration to Layout.tsx
+- `/api/auth/[...nextauth]` - NextAuth API route
+- `/api/register` - User registration endpoint
+- Create new user with POST request
+- Password hashing (bcrypt, 10 salt rounds)
+- Database operations with Prisma
 
 ---
 
-**🔧 Sepet Fonksiyonları | Cart Functions**
+**🎨 Yeni Bileşenler | New Components**
 
 🇹🇷
-- `addToBasket`: Sepete ürün ekleme
-- `removeFromCart`: Sepetten ürün silme
-- `removeCart`: Tüm sepeti temizleme
-- `addToBasketIncrease`: Sepetteki ürün miktarını artırma (max 10)
-- `addToBasketDecrease`: Sepetteki ürün miktarını azaltma (min 1)
-- localStorage senkronizasyonu
+- **LoginClient**: Giriş yapma formu
+- **RegisterClient**: Kayıt olma formu
+- **Input**: Reusable input bileşeni (register, errors, required props)
+- **AuthContainer**: Auth sayfaları için container
+- **Button Güncelleme**: Icon desteği eklendi (FaGoogle)
 
 🇬🇧
-- `addToBasket`: Add product to cart
-- `removeFromCart`: Remove product from cart
-- `removeCart`: Clear entire cart
-- `addToBasketIncrease`: Increase product quantity in cart (max 10)
-- `addToBasketDecrease`: Decrease product quantity in cart (min 1)
-- localStorage synchronization
+- **LoginClient**: Login form component
+- **RegisterClient**: Register form component
+- **Input**: Reusable input component (register, errors, required props)
+- **AuthContainer**: Container for auth pages
+- **Button Update**: Icon support added (FaGoogle)
 
 ---
 
-**📱 Detay Sayfası Güncellemeleri | Detail Page Updates**
+#### 🔧 Teknik Altyapı | Technical Infrastructure
+
+**Backend & Database**
 
 🇹🇷
-- "Sepete Ekle" butonu fonksiyonel hale getirildi
-- Sepette olan ürünler için "Sepete Ekli" butonu gösterimi
-- useEffect ile sepet kontrolü
-- displayButton state'i ile dinamik buton gösterimi
-- Ürün zaten sepetteyse Counter ve Sepete Ekle butonu gizleniyor
+- Prisma Client global instance
+- PrismaAdapter ile NextAuth entegrasyonu
+- bcrypt ile şifre güvenliği
+- MongoDB ObjectId kullanımı
+- Cascade delete ilişkileri
+- Environment variables (.env)
 
 🇬🇧
-- "Add to Cart" button made functional
-- "Added to Cart" button display for products in cart
-- Cart check with useEffect
-- Dynamic button display with displayButton state
-- Counter and Add to Cart button hidden if product already in cart
+- Prisma Client global instance
+- NextAuth integration with PrismaAdapter
+- Password security with bcrypt
+- MongoDB ObjectId usage
+- Cascade delete relations
+- Environment variables (.env)
 
 ---
 
-**🎨 UI İyileştirmeleri | UI Improvements**
+**Authentication Flow**
 
 🇹🇷
-- Sepet sayfası için özel tablo tasarımı (amber temalı, shadow, border)
-- Toast bildirimleri için sağ üst pozisyon
-- Responsive grid düzeni (her sütun w-1/5)
-- Flex-grow ile dinamik sayfa yüksekliği (min-h-screen)
-- Turuncu tema renkleri güncellendi
+- Kullanıcı kayıt → şifre hashleme → veritabanına kaydet
+- Otomatik giriş (kayıt sonrası)
+- Şifre doğrulama (bcrypt.compare)
+- JWT token oluşturma
+- Session yönetimi
+- Error handling (geçersiz email/şifre)
 
 🇬🇧
-- Custom table design for cart page (amber themed, shadow, border)
-- Top-right position for toast notifications
-- Responsive grid layout (each column w-1/5)
-- Dynamic page height with flex-grow (min-h-screen)
-- Orange theme colors updated
+- User registration → password hashing → save to database
+- Auto login (after registration)
+- Password verification (bcrypt.compare)
+- JWT token generation
+- Session management
+- Error handling (invalid email/password)
 
 ---
 
-#### 🔧 Teknik Değişikler | Technical Changes
+**Dependencies**
 
 🇹🇷
-- React Hot Toast kütüphanesi eklendi
-- Context API implementasyonu
-- localStorage kullanımı
-- useCallback ile performans optimizasyonu
-- TypeScript interface'leri (CartContextProps)
-- Custom hook pattern (useCart)
-- Provider pattern implementasyonu
+- `next-auth` - Authentication
+- `@prisma/client` - Database ORM
+- `@next-auth/prisma-adapter` - Prisma adapter
+- `bcrypt` - Password hashing
+- `react-hook-form` - Form management
+- `axios` - HTTP client
 
 🇬🇧
-- React Hot Toast library added
-- Context API implementation
-- localStorage usage
-- Performance optimization with useCallback
-- TypeScript interfaces (CartContextProps)
-- Custom hook pattern (useCart)
-- Provider pattern implementation
+- `next-auth` - Authentication
+- `@prisma/client` - Database ORM
+- `@next-auth/prisma-adapter` - Prisma adapter
+- `bcrypt` - Password hashing
+- `react-hook-form` - Form management
+- `axios` - HTTP client
 
 ---
 
@@ -180,6 +188,10 @@ A modern and user-friendly e-commerce application. Developed using Next.js, Type
 - **Material-UI** - Rating Component
 - **React Icons** - Icon Library
 - **React Hot Toast** - Notification System
+- **NextAuth.js** - Authentication
+- **MongoDB** - Database
+- **Prisma** - ORM
+- **bcrypt** - Password Hashing
 
 ---
 
@@ -189,6 +201,10 @@ A modern and user-friendly e-commerce application. Developed using Next.js, Type
 # Bağımlılıkları yükle | Install dependencies
 npm install
 
+# Prisma setup
+npx prisma generate
+npx prisma db push
+
 # Geliştirme sunucusunu başlat | Start development server
 npm run dev
 ```
@@ -197,10 +213,10 @@ npm run dev
 
 ## 📝 Notlar | Notes
 
-🇹🇷 Proje halen geliştirilme aşamasındadır. Her gün yeni özellikler eklenmektedir. Sepet sistemi ve temel e-ticaret yapısı tamamlanmış olup, backend entegrasyonu yakında eklenecektir.
+🇹🇷 Proje halen geliştirilme aşamasındadır. Authentication sistemi ve sepet özellikleri tamamlanmıştır. Veritabanı entegrasyonu ile kullanıcı yönetimi aktif edilmiştir.
 
-🇬🇧 The project is still under development. New features are being added every day. Cart system and basic e-commerce structure have been completed, and backend integration will be added soon.
+🇬🇧 The project is still under development. Authentication system and cart features have been completed. User management has been activated with database integration.
 
 ---
 
-**Son Güncelleme | Last Update**: 27 Ekim 2025 | October 27, 2025
+**Son Güncelleme | Last Update**: 28 Ekim 2025 | October 28, 2025
